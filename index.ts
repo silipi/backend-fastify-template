@@ -15,7 +15,7 @@ const server = fastify({
 
 server.withTypeProvider<TypeBoxTypeProvider>();
 server.register(fastifyCors, {
-  origin: "http://localhost:5173",
+  origin: "*",
 });
 
 server.register(authenticatePlugin);
@@ -28,9 +28,9 @@ server.get("/health-check", async () => {
   return { status: "ok" };
 });
 
-const PORT = Number(process.env.PORT) || 7171;
+const PORT = Number(process.env.PORT) || 8080;
 
-server.listen({ port: PORT }, (err, address) => {
+server.listen({ port: PORT, host: "0.0.0.0" }, (err, address) => {
   if (err) {
     console.error(err);
     process.exit(1);
