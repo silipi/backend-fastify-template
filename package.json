@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "tsc -p tsconfig.json -w",
+    "build": "tsc",
     "start": "tsc -w & nodemon dist/index.js"
   },
   "dependencies": {
