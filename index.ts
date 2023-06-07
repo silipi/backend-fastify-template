@@ -24,6 +24,10 @@ server.register(prismaPlugin);
 server.register(authRoutes, { prefix: "/auth" });
 server.register(meRoutes, { prefix: "/me" });
 
+server.get("/health-check", async () => {
+  return { status: "ok" };
+});
+
 const PORT = Number(process.env.PORT) || 7171;
 
 server.listen({ port: PORT }, (err, address) => {
